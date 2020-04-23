@@ -1,0 +1,29 @@
+version: '3'
+services:
+  web:
+    image: alanlab/app_loja:v1
+    ports:
+      - "80:3000"
+    depends_on:
+      - database
+    environment:
+      RAILS_ENV: production
+  db-migration:
+    image: alanlab/app_loja:v1
+    command: ["./wait-for", "--timeout=300", "database:5432", "--", "bin/rails", "db:create", "db:migrate"]
+    environment:
+      RAILS_ENV: production
+    depends_on:
+      - database  
+    deploy:
+      restart_policy:
+        condition: none
+  database:
+    image: postgres
+    volumes:
+      - db_data1:/var/lib/postgresql/data
+    environment:
+      RAILS_ENV: production
+volumes:
+  db_data1:
+
