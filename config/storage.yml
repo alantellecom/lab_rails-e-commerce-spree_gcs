@@ -18,7 +18,7 @@ local:
 google:
   service: GCS
   project: rails-lab-264600
-  credentials: <%= Base64.decode64(ENV['GOOGLE_CREDENTIALS']) %>
+  credentials: <%= ENV['GOOGLE_CREDENTIALS'] %>
   bucket: rails-gcs
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)

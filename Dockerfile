@@ -1,9 +1,8 @@
-FROM ruby:2.6-alpine
+FROM ruby:2.6.5-alpine
 
 ENV RAILS_ENV development
 ENV SECRET_KEY_BASE 123456789
 ENV RAILS_MASTER_KEY cccf2d47e4bdac568774145b8067f661
-ENV GOOGLE_CREDENTIALS 
 
 # Install important dependencies
 RUN apk add build-base nodejs yarn tzdata sqlite-dev postgresql-client postgresql-dev python imagemagick git nano --no-cache bash
